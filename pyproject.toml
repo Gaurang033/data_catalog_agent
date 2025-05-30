@@ -1,0 +1,13 @@
+[project]
+name = "data-catalog-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain[anthropic]>=0.3.25",
+    "langgraph>=0.4.7",
+    "python-dotenv>=1.1.0",
+    "anthropic",
+    "pandas"
+]

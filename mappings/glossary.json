@@ -1,0 +1,83 @@
+{
+  "sales": {
+    "Customer ID": {
+      "Business Term": "Customer Identifier",
+      "Definition": "Unique identifier for each customer",
+      "Data Type": "Integer",
+      "Example": "10001",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "First Name": {
+      "Business Term": "Customer First Name",
+      "Definition": "The given name of the customer",
+      "Data Type": "String",
+      "Example": "John",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "Last Name": {
+      "Business Term": "Customer Last Name",
+      "Definition": "The family name of the customer",
+      "Data Type": "String",
+      "Example": "Doe",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "Email": {
+      "Business Term": "Customer Email Address",
+      "Definition": "The primary email address of the customer",
+      "Data Type": "String",
+      "Example": "john.doe@example.com",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "Phone Number": {
+      "Business Term": "Customer Phone Number",
+      "Definition": "The primary contact number of the customer",
+      "Data Type": "String",
+      "Example": "+1-555-123-4567",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "Address": {
+      "Business Term": "Customer Mailing Address",
+      "Definition": "The physical mailing address of the customer",
+      "Data Type": "String",
+      "Example": "123 Main St, Anytown, USA 12345",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "Registration Date": {
+      "Business Term": "Customer Registration Date",
+      "Definition": "The date when the customer first registered",
+      "Data Type": "Date",
+      "Example": "2023-05-15",
+      "Owner": "Customer Management Team",
+      "Source System": "CRM System"
+    },
+    "Last Purchase Date": {
+      "Business Term": "Last Purchase Date",
+      "Definition": "The date of the customer's most recent purchase",
+      "Data Type": "Date",
+      "Example": "2023-06-30",
+      "Owner": "Sales Team",
+      "Source System": "Order Management System"
+    },
+    "Total Purchases": {
+      "Business Term": "Total Customer Purchases",
+      "Definition": "The total number of purchases made by the customer",
+      "Data Type": "Integer",
+      "Example": "5",
+      "Owner": "Sales Team",
+      "Source System": "Order Management System"
+    },
+    "Product Volume": {
+            "definition": "Volume of the product in milliliters",
+            "data_type": "Integer",
+            "example": "750",
+            "owner": "Product Management Team",
+            "source_system": "Product Catalog System"
+        }
+  }
+}

@@ -1,0 +1,101 @@
+sales_id,product_id,store_id,product_name,brand,category,volume_ml,alcohol_percentage,store_name,city,state,region,store_type,sales_date,quantity_sold,unit_price,total_sales,email,transaction_id,payment_method
+1001,1V65H2XX,125,Smirnoff Born,Smirnoff,Beer,700,36.53,Welch Ltd,West Stevenburgh,NY,West,Wholesale,2025/04/13,12,42.13,505.56,keithkent@example.org,OQYC5OA2EI,Cash
+1002,V0LD4FHE,137,Guinness Suffer,Guinness,Gin,700,26.45,White PLC,New Lawrenceborough,AS,Midwest,Wholesale,2025/05/16,27,58.6,1582.2,gfranco@example.com,V6J13DK91C,Mobile Payment
+1003,FABI4G3E,123,Captain Morgan Total,Captain,Gin,500,26.84,Ward Ltd,South Katherinemouth,NM,Midwest,Wholesale,2025/04/05,1,17.97,17.97,kerri54@example.net,AHHO6O86JF,Debit Card
+1004,KQ96EAL6,108,Johnnie Walker Sort,Johnnie,Vodka,700,34.04,Johnson Ltd,West Matthew,KY,South,Wholesale,2025/04/09,50,44.41,2220.5,jasminebeck@example.org,M4RLGPJUJC,Debit Card
+1005,8KBA1PMZ,114,Johnnie Walker Technology,Johnnie,Rum,500,44.29,"Bender, Gomez and Martinez",Judyville,DE,Midwest,Retail,2025/04/11,5,97.41,487.05,gonzalezsteven@example.org,HEMVJT8LCV,Credit Card
+1006,T89Q56QT,124,Ciroc Security,Ciroc,Whisky,1000,16.47,Baker Inc,East Kimberly,WV,West,Retail,2025/05/05,39,21.57,841.23,william29@example.org,DVC08W4822,Mobile Payment
+1007,KPDDEKN2,109,Don Julio Produce,Don,Rum,700,37.58,Cain-Hughes,Andrewview,AL,Southeast,Wholesale,2025/03/27,2,92.6,185.2,fkaiser@example.org,OB34QMLJ0G,Credit Card
+1008,76CGNGCA,135,Ciroc Its,Ciroc,Whisky,500,23.82,"Rowland, Lam and Perkins",Lake Kylemouth,PR,South,Retail,2025/04/19,14,69.51,973.14,james19@example.org,EP4JRZ67GT,Credit Card
+1009,NTA9UM3Z,135,Smirnoff Future,Smirnoff,Rum,750,33.41,Padilla-Solis,North Joseph,CO,Midwest,Wholesale,2025/03/28,33,52.13,1720.29,davisjennifer@example.org,4UFURU15LU,Mobile Payment
+1010,9KM15WDS,104,Tanqueray Draw,Tanqueray,Beer,500,6.26,Spencer Inc,Smithland,OR,South,Retail,2025/05/03,10,85.8,858.0,nicholas31@example.net,K7E1PC57DR,Debit Card
+1011,3KJUC71I,146,Don Julio So,Don,Rum,500,41.63,Ryan PLC,Christopherhaven,MH,Southeast,Wholesale,2025/05/03,43,56.91,2447.13,williamsjean@example.net,T59QHEBC7O,Mobile Payment
+1012,WFQT2AY3,123,Johnnie Walker Write,Johnnie,Liqueur,500,31.26,James and Sons,Dennishaven,IL,South,Wholesale,2025/05/18,6,34.67,208.02,tmcgee@example.com,R20NPMP1GM,Mobile Payment
+1013,AJGHZPGP,138,Baileys Require,Baileys,Gin,700,25.94,Durham-Whitaker,Stephanieview,NC,Southeast,Retail,2025/05/07,2,96.49,192.98,brad23@example.net,I85DH8UIX9,Cash
+1014,W6OH95CX,143,Tanqueray Hear,Tanqueray,Gin,750,15.94,Armstrong-Carter,South Steven,CO,Northeast,Wholesale,2025/04/29,9,96.92,872.28,john96@example.net,XN7P8B007C,Mobile Payment
+1015,2WEOT4X8,114,Johnnie Walker Dark,Johnnie,Rum,750,16.39,"Mccall, Gomez and Chapman",East James,IN,Midwest,Wholesale,2025/04/13,8,51.19,409.52,jennifer41@example.com,0VVPACCEKN,Debit Card
+1016,Z33D876L,126,Don Julio Summer,Don,Gin,1000,37.17,Jackson-Lucero,Michaelfurt,AK,South,Retail,2025/05/13,2,58.69,117.38,maxwellrachel@example.net,J9NA3455Q4,Credit Card
+1017,DKDW7AMF,113,Tanqueray Carry,Tanqueray,Gin,700,12.11,Chase Ltd,Ryanville,TN,Midwest,Retail,2025/04/08,38,6.48,246.24,watsonmario@example.org,IT6QM5IIK7,Mobile Payment
+1018,2D2B1SZ9,142,Baileys Just,Baileys,Whisky,1000,40.92,Flores-Ellis,Morrisfurt,NJ,West,Wholesale,2025/05/04,11,69.67,766.37,amarshall@example.net,UKP781U1L1,Debit Card
+1019,M1B6TXH2,112,Johnnie Walker Scene,Johnnie,Rum,500,9.28,Warren PLC,Teresafort,FM,Midwest,Wholesale,2025/05/05,4,30.24,120.96,hayesgary@example.org,M135I9QYTA,Cash
+1020,IY4JFAC0,126,Tanqueray Those,Tanqueray,Whisky,750,9.91,Mcmillan PLC,Campbellmouth,DE,Northeast,Wholesale,2025/05/10,47,19.93,936.71,brucerachel@example.net,TIXO02GOI3,Debit Card
+1021,VDVQIVTJ,147,Guinness Seat,Guinness,Gin,750,30.42,"Erickson, Pugh and Terrell",Perezport,VA,Northeast,Retail,2025/04/25,46,20.21,929.66,pearsondesiree@example.net,4NY7T2U25E,Cash
+1022,7Z1KVQV1,102,Tanqueray Without,Tanqueray,Liqueur,700,24.3,Hood-Jones,Simmonsport,OK,Midwest,Retail,2025/03/30,20,24.9,498.0,atkinsonbrian@example.org,KOX8CFEU9M,Debit Card
+1023,RBBM0V7B,136,Smirnoff Action,Smirnoff,Tequila,700,41.74,Swanson-Aguirre,Hernandezview,HI,Northeast,Wholesale,2025/04/15,17,83.88,1425.96,astevenson@example.org,1KZYWUQ5R1,Mobile Payment
+1024,LDRMC89S,140,Johnnie Walker Administration,Johnnie,Beer,1000,8.86,Norman-Ayala,New Theresaport,NJ,Midwest,Retail,2025/03/28,4,71.86,287.44,robert32@example.net,ZTWO1CSFTW,Mobile Payment
+1025,UBU54DIP,143,Smirnoff Could,Smirnoff,Tequila,500,38.67,Payne-Lee,New Shelley,NC,South,Wholesale,2025/04/03,15,9.46,141.9,jasonsmith@example.net,X5GMOLVYVR,Debit Card
+1026,JVB1WDKU,113,Baileys Table,Baileys,Tequila,1000,10.8,"Olson, West and Grant",Karlaville,NY,Northeast,Retail,2025/05/21,30,87.03,2610.9,alejandra68@example.org,1DE7KPT88A,Debit Card
+1027,DZPEPO64,137,Don Julio Peace,Don,Liqueur,750,6.73,Bowers-Jensen,Westmouth,GA,Southeast,Wholesale,2025/04/13,32,45.99,1471.68,ashleyhernandez@example.com,PDWX6MZQVG,Mobile Payment
+1028,N2CDA242,107,Ciroc Money,Ciroc,Whisky,700,19.82,"Ford, Murphy and Bailey",Wagnerport,WV,South,Wholesale,2025/04/12,22,41.73,918.06,rcline@example.com,ASD1IG67NQ,Debit Card
+1029,O5T4JFY7,121,Captain Morgan List,Captain,Beer,700,21.28,Graham-Watson,South Jasonport,NJ,Midwest,Wholesale,2025/05/17,13,63.02,819.26,brogers@example.org,URW6AGJJBD,Mobile Payment
+1030,BJ97P4K2,109,Johnnie Walker Decision,Johnnie,Vodka,500,44.79,Jones Ltd,West Anne,NE,West,Retail,2025/05/16,48,8.29,397.92,hfoster@example.org,44KH8JP0WQ,Credit Card
+1031,8WXU7EFA,120,Captain Morgan Old,Captain,Rum,1000,25.02,"Mata, May and Myers",Jillside,MI,Northeast,Wholesale,2025/05/21,27,36.97,998.19,hhull@example.net,IAYXTFD5LP,Credit Card
+1032,YJ803KG3,103,Captain Morgan Structure,Captain,Tequila,700,33.89,"Allen, Daniel and Rios",East Leahburgh,AS,Southeast,Retail,2025/04/25,1,20.58,20.58,morenogabriel@example.net,SBYGTWJ6SD,Mobile Payment
+1033,5WQLWD7C,130,Don Julio His,Don,Vodka,750,21.85,"Fisher, English and Sanchez",West John,GU,West,Retail,2025/03/25,45,67.2,3024.0,elizabethjohnson@example.net,HNONQHY9ZX,Mobile Payment
+1034,5FBC57KG,128,Guinness Pull,Guinness,Beer,500,30.86,Patel and Sons,East Angelaside,TX,Southeast,Wholesale,2025/04/20,42,83.21,3494.82,garybeck@example.com,UZFBZQNO74,Credit Card
+1035,AG59SBUN,107,Tanqueray Cut,Tanqueray,Whisky,1000,22.62,"Cox, Johnson and Mcdonald",New Angela,WI,South,Wholesale,2025/04/28,13,62.57,813.41,debrasloan@example.org,LI1QAXGJ51,Cash
+1036,AD1JZ6V6,111,Ciroc Big,Ciroc,Beer,700,11.17,"Chapman, Romero and Suarez",South Darrenmouth,OH,Midwest,Wholesale,2025/03/27,36,12.43,447.48,eric98@example.com,GZWOVBE9Z6,Debit Card
+1037,8U44EIWA,110,Don Julio Yes,Don,Beer,750,24.77,"David, Mclean and Carr",Kingbury,NY,Southeast,Retail,2025/05/02,26,79.78,2074.28,brenda01@example.net,844M3SAM26,Credit Card
+1038,CKD72U3F,138,Tanqueray Option,Tanqueray,Liqueur,500,41.6,"Casey, Morrison and Le",West Christinashire,NV,Midwest,Wholesale,2025/05/13,3,52.43,157.29,kyle86@example.net,INTM94FSEW,Mobile Payment
+1039,NCYD8JT0,104,Guinness Represent,Guinness,Tequila,1000,24.89,Schneider and Sons,East Meaganhaven,VI,West,Wholesale,2025/04/29,42,97.08,4077.36,walter27@example.com,NXT9LOW60G,Mobile Payment
+1040,JK43ZKBN,124,Baileys Specific,Baileys,Rum,700,9.8,Saunders-House,Phillipshaven,KY,Northeast,Retail,2025/03/31,42,22.84,959.28,david50@example.com,41AGP8PQEA,Debit Card
+1041,82TW93TH,116,Ciroc Reveal,Ciroc,Vodka,750,20.84,"Mitchell, Ward and Wiley",South Nathan,AR,West,Wholesale,2025/04/21,45,16.14,726.3,pwilson@example.org,TMXIXG264T,Debit Card
+1042,SNT9E237,106,Ciroc Boy,Ciroc,Beer,700,20.12,Briggs PLC,Clarkmouth,KY,Midwest,Retail,2025/04/05,6,96.98,581.88,ujohnson@example.org,TRNA8ES6X5,Credit Card
+1043,YOROMMEI,145,Guinness Stand,Guinness,Beer,700,37.42,Pitts PLC,Aaronmouth,NJ,Midwest,Wholesale,2025/04/20,43,76.94,3308.42,phambrenda@example.net,NMXEUFAPMN,Mobile Payment
+1044,0BI4HJNW,144,Smirnoff What,Smirnoff,Vodka,1000,17.29,Blake and Sons,South Maryport,NE,South,Retail,2025/04/04,5,21.96,109.8,oconnoranthony@example.org,CT883HFKBV,Credit Card
+1045,ZAKROOFG,134,Tanqueray Deal,Tanqueray,Gin,1000,26.81,Clark PLC,Haleyport,AK,West,Wholesale,2025/05/02,32,62.32,1994.24,jamesforbes@example.org,NE11VURWAD,Credit Card
+1046,JIIODAPD,146,Baileys Wish,Baileys,Tequila,750,37.89,Alexander Group,North Jessicafurt,WA,Midwest,Wholesale,2025/04/20,38,70.59,2682.42,don97@example.com,ROCQEG0RH7,Credit Card
+1047,AUM8EW16,145,Ciroc Big,Ciroc,Liqueur,750,15.99,Mccarthy-Knight,Smithfurt,OH,Midwest,Wholesale,2025/05/06,33,16.14,532.62,hlawrence@example.org,2THRNSYW03,Credit Card
+1048,HEO6CTLO,110,Captain Morgan Economy,Captain,Tequila,1000,11.43,Jackson-Anderson,Meltonchester,LA,South,Wholesale,2025/05/08,2,27.68,55.36,travisdavis@example.net,RIUH9V5SWT,Cash
+1049,36OO4B67,106,Baileys Alone,Baileys,Beer,750,20.84,Rodriguez and Sons,New Krististad,CO,South,Retail,2025/04/15,19,57.25,1087.75,paulstone@example.com,MR5YWMPV8I,Cash
+1050,02XIRQEE,120,Don Julio Performance,Don,Tequila,500,18.22,Johnson-Marshall,Lake Lawrence,DC,Northeast,Retail,2025/05/20,35,27.18,951.3,john32@example.com,ZE1K52JARD,Credit Card
+1051,R76NL5MN,103,Tanqueray Course,Tanqueray,Vodka,1000,40.18,Bell Group,East Nicholas,MN,Midwest,Wholesale,2025/05/22,31,73.02,2263.62,vbell@example.com,VVTBLTRGHK,Mobile Payment
+1052,SYEWWPMN,134,Don Julio May,Don,Tequila,1000,39.08,Smith-Thomas,North Lawrence,AK,Southeast,Wholesale,2025/04/15,1,99.82,99.82,floresmartin@example.org,HVU9F4PCRG,Debit Card
+1053,9IGIE65E,109,Baileys Whatever,Baileys,Rum,750,18.59,Pierce Ltd,East Jaredland,WI,Southeast,Wholesale,2025/04/28,1,56.7,56.7,halljames@example.com,BH80EQ7JXY,Credit Card
+1054,F7G945O4,135,Ciroc Page,Ciroc,Tequila,500,19.41,Jones Group,Jamesland,PA,Midwest,Retail,2025/04/09,3,82.73,248.19,jacquelinehenry@example.org,A6QYK74VJH,Credit Card
+1055,EGYY5U34,120,Smirnoff Example,Smirnoff,Tequila,1000,10.65,Gallagher-Carter,New Lauraport,AR,Northeast,Wholesale,2025/05/03,21,8.27,173.67,manuel54@example.com,19QPUOXA15,Mobile Payment
+1056,S55GO3W8,147,Baileys Ability,Baileys,Whisky,750,31.78,"Saunders, Chavez and Hayes",Justinville,CO,Northeast,Wholesale,2025/04/20,13,47.3,614.9,cunninghamdiane@example.net,SMTTME7FS5,Mobile Payment
+1057,6L9OHUSM,123,Ciroc Image,Ciroc,Vodka,500,40.8,"Perez, Cohen and Miller",Port Beth,IL,Northeast,Wholesale,2025/03/29,29,78.42,2274.18,uwalsh@example.net,8UYB0ZXMFP,Mobile Payment
+1058,M52VN0C0,138,Ciroc Radio,Ciroc,Beer,500,17.18,"Reed, Ward and King",South Richard,CO,West,Wholesale,2025/03/28,37,80.41,2975.17,snyderdaniel@example.net,59YKASRQ2W,Cash
+1059,UESGSTAT,133,Don Julio Nation,Don,Liqueur,750,17.4,Smith Group,Baileyfort,OR,West,Retail,2025/04/24,24,38.04,912.96,qwilliams@example.org,TYKCX6DSLD,Cash
+1060,HIH120O4,145,Guinness House,Guinness,Rum,700,10.57,Moore-Williams,Nguyenfort,AZ,South,Wholesale,2025/04/03,23,67.71,1557.33,victoria65@example.net,7QXV0S2JAC,Credit Card
+1061,MMNLN552,146,Captain Morgan Town,Captain,Liqueur,750,42.91,"Zimmerman, Sanders and Miranda",Franciscoport,MD,West,Retail,2025/05/13,42,93.3,3918.6,angela14@example.net,9XEWNIP5PD,Credit Card
+1062,II36OHA2,109,Don Julio Read,Don,Vodka,500,29.78,"Graves, Bean and Marks",Lake Chelseatown,RI,Midwest,Retail,2025/04/25,41,13.24,542.84,slynch@example.org,WTG6IBSXE8,Mobile Payment
+1063,LKVJE2JS,110,Baileys Space,Baileys,Whisky,700,8.65,"Evans, Brown and Wood",Josephchester,MD,Midwest,Retail,2025/04/25,48,70.13,3366.24,patriciavega@example.net,IXPL0MIK5C,Cash
+1064,E6CC8IZ8,140,Ciroc Possible,Ciroc,Liqueur,700,12.51,Powell PLC,Hahnside,MS,South,Wholesale,2025/05/14,30,67.34,2020.2,onichols@example.org,9EXFR7JV81,Credit Card
+1065,AK9STOMR,130,Captain Morgan Debate,Captain,Whisky,1000,8.0,Phillips Group,Jacobsview,NC,South,Wholesale,2025/05/21,39,9.73,379.47,meagan74@example.net,JSV4S36KQW,Mobile Payment
+1066,FWZZS189,102,Smirnoff Officer,Smirnoff,Liqueur,700,34.11,Jones Ltd,Harrismouth,ID,Northeast,Wholesale,2025/05/07,2,82.8,165.6,jimmy33@example.org,YU2R144MFS,Debit Card
+1067,M1PSUBVN,149,Ciroc What,Ciroc,Whisky,1000,15.77,Allison Ltd,West Teresa,NV,Midwest,Wholesale,2025/05/02,7,73.78,516.46,mkane@example.com,FCYGXUQOED,Credit Card
+1068,JQ4S76VV,143,Smirnoff Step,Smirnoff,Tequila,750,18.09,Cruz-Parker,Harringtonberg,MO,Southeast,Retail,2025/03/24,43,76.22,3277.46,whitewendy@example.org,3TL4LGMRK1,Debit Card
+1069,1OH7CP66,140,Don Julio Middle,Don,Beer,750,15.18,Wright PLC,West Ryan,CA,Midwest,Retail,2025/03/24,44,84.96,3738.24,yjenkins@example.org,OIF4XX6HZK,Credit Card
+1070,NTGLMNZ6,150,Don Julio Really,Don,Beer,1000,28.78,Munoz-Mccall,Kellerburgh,MN,Midwest,Retail,2025/05/01,6,94.92,569.52,rachelwarren@example.com,ZSG89KLZON,Debit Card
+1071,YHSWL7FQ,101,Ciroc Resource,Ciroc,Whisky,500,39.13,Hall-Friedman,New Maria,PW,Midwest,Wholesale,2025/04/10,22,69.29,1524.38,cynthiawhite@example.com,7PSHKDYEZV,Debit Card
+1072,V72SIW0O,111,Baileys Provide,Baileys,Vodka,750,35.55,Warner-Knight,North Ethan,SD,Northeast,Retail,2025/05/04,40,70.85,2834.0,tmassey@example.net,10CKYSXH2Z,Cash
+1073,85MISU00,136,Baileys Wear,Baileys,Vodka,700,43.5,Castro-Fisher,Parkerbury,SC,West,Retail,2025/05/12,41,71.15,2917.15,andrea57@example.com,Y8XL61HO79,Cash
+1074,VC5HKYP6,102,Ciroc Radio,Ciroc,Liqueur,750,29.47,Miles-Jones,New Paulbury,IL,West,Retail,2025/04/08,10,86.84,868.4,christophercook@example.net,JDIN2T6FQY,Debit Card
+1075,Z4I4CDWM,121,Smirnoff Fact,Smirnoff,Whisky,700,8.73,Potts-Lawson,Wilkinsonmouth,OR,South,Retail,2025/04/19,15,22.19,332.85,phillipsjeremy@example.net,NJ0ZXCU2DY,Credit Card
+1076,81SQ4E6T,145,Guinness Sell,Guinness,Vodka,700,15.88,Calhoun Inc,Williamburgh,NY,West,Wholesale,2025/05/18,18,54.04,972.72,kevinramos@example.com,BWQY13P8GC,Mobile Payment
+1077,PKKOF7HZ,124,Guinness Thought,Guinness,Beer,1000,43.16,Bauer-Hicks,Youngburgh,WI,Northeast,Wholesale,2025/05/11,21,15.63,328.23,qhoward@example.com,36ICBTGSYW,Credit Card
+1078,MU05F6TD,130,Captain Morgan Drive,Captain,Vodka,700,18.1,"Garcia, Dunn and Phillips",Cervanteshaven,VI,Southeast,Retail,2025/04/28,8,46.85,374.8,carolrojas@example.net,J2212EQCNL,Mobile Payment
+1079,BK3WBELZ,143,Don Julio Plant,Don,Tequila,700,9.87,"Ballard, Kerr and Stafford",South Candicechester,NE,Midwest,Retail,2025/04/07,37,51.0,1887.0,leekelly@example.org,LWHAOHMNSG,Debit Card
+1080,XLAGTZ0U,132,Baileys Dream,Baileys,Tequila,500,11.64,Stewart Group,East Jacob,NJ,Southeast,Retail,2025/04/12,5,17.33,86.65,howardrobert@example.org,THNYACY5DC,Debit Card
+1081,MD8UDTF6,144,Don Julio Each,Don,Whisky,500,42.75,Brown and Sons,West Richardhaven,WA,South,Retail,2025/04/26,1,61.07,61.07,qmullins@example.org,D08XD7DFK2,Credit Card
+1082,5B26AARP,135,Don Julio Mrs,Don,Tequila,700,21.99,"Edwards, Hudson and Johnson",Micheletown,SD,West,Wholesale,2025/04/05,27,13.31,359.37,rodney57@example.com,9V6BZ2PR2Q,Cash
+1083,6NSYQRJ0,121,Captain Morgan Pressure,Captain,Gin,1000,29.32,"Montoya, Santos and Hess",South Ruthfurt,ID,Midwest,Wholesale,2025/04/10,31,27.05,838.55,terri46@example.org,9T47OLQQBD,Cash
+1084,SD5CL7N5,112,Guinness Threat,Guinness,Rum,1000,34.51,King-Marks,Hernandezhaven,WI,Northeast,Retail,2025/04/20,16,69.35,1109.6,dannygaines@example.com,J1MTCHRRRE,Debit Card
+1085,N5PC39GQ,126,Tanqueray Research,Tanqueray,Gin,500,8.34,Hawkins PLC,East Kimberly,MI,Northeast,Wholesale,2025/04/08,36,74.28,2674.08,luis45@example.net,F1LBODPASH,Debit Card
+1086,AHHJRZWR,103,Captain Morgan Fear,Captain,Rum,500,20.24,Christian-Hill,South Donnaland,VI,West,Wholesale,2025/05/20,42,9.3,390.6,lmendez@example.com,21GV769ZBZ,Credit Card
+1087,YLU7QZ0B,107,Don Julio Value,Don,Vodka,500,11.21,Rivera-Thompson,South Daltonside,NC,Midwest,Wholesale,2025/05/22,30,68.06,2041.8,allencindy@example.net,5P5QY6GGVZ,Cash
+1088,A1WC4QNH,129,Johnnie Walker Day,Johnnie,Vodka,1000,44.25,Smith-Williams,Adamsview,NE,Midwest,Retail,2025/05/04,10,58.75,587.5,francisco55@example.org,FQ72NO9QP4,Mobile Payment
+1089,SME266WQ,150,Johnnie Walker Speak,Johnnie,Beer,700,44.22,Johnson Group,Dylanfurt,CA,Midwest,Wholesale,2025/05/09,39,57.85,2256.15,eddiehansen@example.org,79PMRACKV1,Cash
+1090,4JX4RXGY,114,Guinness High,Guinness,Beer,1000,11.11,Franco and Sons,Jacobton,AS,West,Wholesale,2025/05/09,31,56.83,1761.73,tracypeterson@example.com,Z19L06S378,Debit Card
+1091,M8VT807F,147,Guinness Church,Guinness,Gin,1000,7.79,Jacobs PLC,Lake Kevinstad,FL,Southeast,Wholesale,2025/04/07,27,99.42,2684.34,neil02@example.org,01R1NQN5AF,Mobile Payment
+1092,UMCXF60M,116,Don Julio Before,Don,Liqueur,1000,12.48,Watson LLC,West Jenniferville,SC,South,Wholesale,2025/05/14,12,29.19,350.28,justinsaunders@example.com,65QN7Y5VUY,Debit Card
+1093,BW05ID4U,120,Tanqueray Key,Tanqueray,Gin,750,28.33,Wilson-Murphy,Josephstad,CA,Southeast,Retail,2025/04/12,33,69.51,2293.83,chad92@example.org,0J7GHUY29I,Credit Card
+1094,036VHTIF,146,Baileys Hundred,Baileys,Vodka,750,10.94,Cole LLC,Port Dawnhaven,AR,South,Wholesale,2025/04/19,49,79.14,3877.86,lindsey79@example.net,ABKX58M982,Credit Card
+1095,9LZBOR8Q,147,Don Julio Energy,Don,Gin,1000,14.06,"Campbell, Mcintosh and Cunningham",South Shannonshire,MI,South,Wholesale,2025/04/07,42,76.35,3206.7,mpaul@example.org,5RRH6DET0B,Debit Card
+1096,4CYUTU70,124,Johnnie Walker Since,Johnnie,Beer,1000,5.91,Hayes PLC,Jessicafurt,OR,Midwest,Wholesale,2025/04/15,3,52.84,158.52,burkekevin@example.org,K49IMYZ2CR,Debit Card
+1097,NRPU6H4K,109,Don Julio Full,Don,Gin,750,35.24,Joyce Inc,New Samantha,HI,West,Retail,2025/04/19,42,40.92,1718.64,amylong@example.org,SYYEVFQXBL,Debit Card
+1098,3G9ZQYEB,115,Captain Morgan Soldier,Captain,Gin,1000,39.67,Hunter-Smith,East Joshuamouth,AS,Midwest,Wholesale,2025/03/24,6,32.03,192.18,jdavila@example.net,9WTPWSOFVV,Credit Card
+1099,K5484R9B,124,Guinness Every,Guinness,Tequila,700,43.83,Bell Ltd,North Meghanmouth,MA,Southeast,Retail,2025/04/06,17,53.86,915.62,christinereed@example.com,2REGG600AQ,Debit Card
+1100,8PFR21T1,109,Smirnoff Inside,Smirnoff,Whisky,1000,15.59,"Dunn, Harris and Meadows",Caseyton,AS,West,Wholesale,2025/05/03,35,59.77,2091.95,cody68@example.net,7JE98ASJUN,Credit Card
