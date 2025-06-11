@@ -11,3 +11,8 @@ dependencies = [
     "anthropic",
     "pandas"
 ]
+
+[tool.uv.workspace]
+members = [
+    "langGraph/data_catalog_agent",
+]

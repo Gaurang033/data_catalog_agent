@@ -1,5 +1,6 @@
 import json
-from typing import Annotated
+import re
+from typing import Annotated,Literal
 
 from anthropic import Anthropic
 from dotenv import load_dotenv
@@ -23,6 +24,7 @@ class State(TypedDict):
     messages: Annotated[list, add_messages]
     file_path: str
     domain: str
+    source_type: Literal["csv", "webpage", "swagger"]
 
 
 # Step 4: Build LangGraph flow
@@ -32,24 +34,6 @@ def build_graph():
     graph_builder.add_edge(START, "map_glossary")
     graph_builder.add_edge("map_glossary", END)
     return graph_builder.compile()
-
-
-# Run it all
-def main(file_path: str, domain: str):
-    graph = build_graph()
-    state = graph.invoke({"file_path": file_path, "domain": domain})
-    print(state["messages"][-1].content)
-    final_message = state["messages"][-1].content
-
-    from pprint import pprint
-
-    pprint(state)
-
-
-if __name__ == "__main__":
-    # Example usage
-    main("data/raw_pos.csv", "sales")
-
 
 MAPPED_COLUMNS_FILE = "output/mapped_columns.json"
 NEW_GLOSSARY_FILE = "output/new_glossary_entries.json"
@@ -68,3 +52,45 @@ def save_results(data: dict):
         json.dump(data.get("new_domain", {}), f, indent=2)
 
     return "DONE"
+
+
+def extract_json_block(text: str) -> dict:
+    try:
+        json_match = re.search(r"\{.*\}", text, re.DOTALL)
+        if not json_match:
+            raise ValueError("No JSON block found in the output.")
+        json_text = json_match.group(0)
+        return json.loads(json_text)
+    except Exception as e:
+        print(f"❌ Error extracting/parsing JSON: {e}")
+        print("Raw message:\n", text)
+        return {}
+
+# Run it all
+def main(file_path: str, domain: str, source_type: str):
+    graph = build_graph()
+    state = graph.invoke({"file_path": file_path, "domain": domain, "source_type": source_type})
+    print(state["messages"][-1].content)
+    final_message = state["messages"][-1].content
+
+    parsed_output = extract_json_block(final_message)
+    if parsed_output:
+        save_results(parsed_output)
+
+
+
+    # save_results(parsed_output)
+
+    # from pprint import pprint
+
+    # pprint(state)
+
+
+if __name__ == "__main__":
+    # Example usage
+    # main("data/raw_pos.csv", "sales", "csv")
+    main("https://developers.facebook.com/docs/graph-api/reference/user/", "sales", "webpage")
+    # main("https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28", "sales", "webpage")
+
+    # main("https://petstore.swagger.io/v2/swagger.json", "sales", "swagger")
+

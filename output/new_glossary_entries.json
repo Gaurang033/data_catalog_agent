@@ -1,0 +1,42 @@
+{
+  "Access_Token": {
+    "Business Term": "User Access Token",
+    "Definition": "Authentication token that provides secure access to user data",
+    "Data Type": "String",
+    "Example": "EAAZAw4ZBZCx0wBAC...",
+    "Owner": "Security Team",
+    "Source System": "Authentication System"
+  },
+  "User_ID": {
+    "Business Term": "App-Scoped User Identifier",
+    "Definition": "Unique identifier for a user within the specific application context",
+    "Data Type": "String",
+    "Example": "12345678",
+    "Owner": "Identity Management Team",
+    "Source System": "User Management System"
+  },
+  "Birthday": {
+    "Business Term": "User Birthday",
+    "Definition": "User's date of birth in MM/DD/YYYY format",
+    "Data Type": "Date",
+    "Example": "01/15/1990",
+    "Owner": "User Profile Team",
+    "Source System": "Profile Management System"
+  },
+  "Location": {
+    "Business Term": "User Location",
+    "Definition": "Current geographical location of the user",
+    "Data Type": "Object",
+    "Example": "{city: 'San Francisco', country: 'USA'}",
+    "Owner": "User Profile Team",
+    "Source System": "Location Services"
+  },
+  "Profile_Picture": {
+    "Business Term": "User Profile Picture",
+    "Definition": "URL or reference to user's profile image",
+    "Data Type": "String",
+    "Example": "https://platform.example.com/profile/123.jpg",
+    "Owner": "Media Management Team",
+    "Source System": "Media Storage System"
+  }
+}
