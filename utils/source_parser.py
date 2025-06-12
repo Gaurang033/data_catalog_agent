@@ -39,6 +39,49 @@ def parse_csv(file_path: str, sample_size=10):
         print(f"Error reading CSV: {e}")
         return {}, pd.DataFrame()
 
+def parse_excel(file_path: str, sample_size=10):
+    try:
+        df = pd.read_excel(file_path, nrows=sample_size)
+        schema = dict(df.dtypes.apply(lambda dt: dt.name))
+        return schema, df
+    except Exception as e:
+        print(f"Error reading Excel: {e}")
+        return {}, pd.DataFrame()
+
+def parse_parquet(file_path: str, sample_size=10):
+    try:
+        df = pd.read_parquet(file_path)
+        df_sample = df.head(sample_size)
+        schema = dict(df_sample.dtypes.apply(lambda dt: dt.name))
+        return schema, df_sample
+    except Exception as e:
+        print(f"Error reading Parquet: {e}")
+        return {}, pd.DataFrame()
+
+def parse_json(file_path: str, sample_size=10):
+    try:
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+            df = pd.DataFrame(data)
+            df_sample = df.head(sample_size)
+            schema = dict(df_sample.dtypes.apply(lambda dt: dt.name))
+            return schema, df_sample
+    except Exception as e:
+        print(f"Error reading JSON: {e}")
+        return {}, pd.DataFrame()
+
+def parse_api(url: str, sample_size=10):
+    try:
+        response = requests.get(url)
+        data = response.json()
+        df = pd.DataFrame(data)
+        df_sample = df.head(sample_size)
+        schema = dict(df_sample.dtypes.apply(lambda dt: dt.name))
+        return schema, df_sample
+    except Exception as e:
+        print(f"Error reading API response: {e}")
+        return {}, pd.DataFrame()
+
 
 def parse_webpage(url: str):
     try:
@@ -63,19 +106,20 @@ def parse_webpage(url: str):
                     fields[field] = desc
 
         # Fallback to <code> tags if no descriptions found
-        # for code in soup.find_all("code"):
-        #     field = code.text.strip()
-        #     if (
-        #         1 < len(field) < 50 and
-        #         " " not in field and
-        #         field not in seen
-        #     ):
-        #         seen.add(field)
-        #         fields[field] = ""
-        # return fields, f"Parsed {len(fields)} fields from webpage"
-
+        for code in soup.find_all("code"):
+            field = code.text.strip()
+            if (
+                1 < len(field) < 50 and
+                " " not in field and
+                field not in seen
+            ):
+                seen.add(field)
+                fields[field] = ""
         print("--------fields--------------",fields)
-        return fields, "Webpage input — no sample data"
+        return fields, "Webpage input — parsed fields and fallback"
+
+        
+        # return fields, "Webpage input — no sample data"
 
     except Exception as e:
         print(f"Error parsing webpage: {e}")
@@ -125,3 +169,4 @@ def parse_swagger(url_or_path: str):
 
     except Exception as e:
         return {}, f"Swagger parsing failed: {e}"
+

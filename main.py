@@ -56,13 +56,21 @@ def save_results(data: dict):
 
 def extract_json_block(text: str) -> dict:
     try:
-        json_match = re.search(r"\{.*\}", text, re.DOTALL)
-        if not json_match:
-            raise ValueError("No JSON block found in the output.")
-        json_text = json_match.group(0)
-        return json.loads(json_text)
+        matches = re.findall(r"\{(?:[^{}]|(?R))*\}", text, re.DOTALL)
+        merged = {}
+        for match in matches:
+            try:
+                parsed = json.loads(match)
+                for k in parsed:
+                    if isinstance(parsed[k], dict):
+                        merged[k] = {**merged.get(k, {}), **parsed[k]}
+                    else:
+                        merged[k] = parsed[k]
+            except Exception:
+                continue
+        return merged
     except Exception as e:
-        print(f"❌ Error extracting/parsing JSON: {e}")
+        print(f"❌ Error parsing JSON chunks: {e}")
         print("Raw message:\n", text)
         return {}
 
@@ -79,7 +87,7 @@ def main(file_path: str, domain: str, source_type: str):
 
 
 
-    # save_results(parsed_output)
+    save_results(parsed_output)
 
     # from pprint import pprint
 
