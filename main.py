@@ -1,6 +1,6 @@
 import json
 import re
-from typing import Annotated,Literal
+from typing import Annotated, Literal
 
 from anthropic import Anthropic
 from dotenv import load_dotenv
@@ -10,8 +10,7 @@ from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode
 from typing_extensions import TypedDict
 
-from nodes.map_business_glossary import (GlossaryInput, map_glossary,
-                                         map_glossary_node)
+from nodes.map_business_glossary import GlossaryInput, map_glossary, map_glossary_node
 
 # load_dotenv()
 # client = Anthropic()
@@ -34,6 +33,7 @@ def build_graph():
     graph_builder.add_edge(START, "map_glossary")
     graph_builder.add_edge("map_glossary", END)
     return graph_builder.compile()
+
 
 MAPPED_COLUMNS_FILE = "output/mapped_columns.json"
 NEW_GLOSSARY_FILE = "output/new_glossary_entries.json"
@@ -74,18 +74,19 @@ def extract_json_block(text: str) -> dict:
         print("Raw message:\n", text)
         return {}
 
+
 # Run it all
 def main(file_path: str, domain: str, source_type: str):
     graph = build_graph()
-    state = graph.invoke({"file_path": file_path, "domain": domain, "source_type": source_type})
+    state = graph.invoke(
+        {"file_path": file_path, "domain": domain, "source_type": source_type}
+    )
     print(state["messages"][-1].content)
     final_message = state["messages"][-1].content
 
     parsed_output = extract_json_block(final_message)
     if parsed_output:
         save_results(parsed_output)
-
-
 
     save_results(parsed_output)
 
@@ -97,8 +98,14 @@ def main(file_path: str, domain: str, source_type: str):
 if __name__ == "__main__":
     # Example usage
     # main("data/raw_pos.csv", "sales", "csv")
-    main("https://developers.facebook.com/docs/graph-api/reference/user/", "sales", "webpage")
-    # main("https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28", "sales", "webpage")
+    # main(
+    #     "https://developers.facebook.com/docs/graph-api/reference/user/",
+    #     "sales",
+    #     "webpage",
+    # )
+    # main("data/raw_pos.json", "sales", "json")
+    # main("data/raw_pos.xlsx", "sales", "excel")
+    main("data/raw_pos.parquet", "sales", "parquet")
+    # main("https://developer.spotify.com/documentation/web-api/reference/get-an-artist", "sales", "webpage")
 
     # main("https://petstore.swagger.io/v2/swagger.json", "sales", "swagger")
-

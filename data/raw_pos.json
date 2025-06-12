@@ -1,0 +1,38 @@
+[
+  {
+    "invoice_id": "INV1001",
+    "store_name": "LiquorMart NYC",
+    "product": "Jack Daniels",
+    "category": "Whiskey",
+    "quantity": 3,
+    "unit_price": 30,
+    "total_amount": 90,
+    "date": "2024-05-01",
+    "customer_age": 35,
+    "location": "New York, NY"
+  },
+  {
+    "invoice_id": "INV1002",
+    "store_name": "Cheers Chicago",
+    "product": "Absolut Vodka",
+    "category": "Vodka",
+    "quantity": 2,
+    "unit_price": 25,
+    "total_amount": 50,
+    "date": "2024-05-02",
+    "customer_age": 28,
+    "location": "Chicago, IL"
+  },
+  {
+    "invoice_id": "INV1003",
+    "store_name": "The Bottle Stop",
+    "product": "Bacardi Rum",
+    "category": "Rum",
+    "quantity": 5,
+    "unit_price": 20,
+    "total_amount": 100,
+    "date": "2024-05-03",
+    "customer_age": 40,
+    "location": "Miami, FL"
+  }
+]

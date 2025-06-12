@@ -9,12 +9,13 @@ from utils.source_parser import (
     parse_excel,
     parse_parquet,
     parse_json,
-    parse_api
+    parse_api,
 )
 from utils.semantic_tagger import infer_semantic_tags
 from typing import TypedDict, Literal
 from pandas import DataFrame
 import json
+
 
 class GlossaryInput(TypedDict):
     schema: dict
@@ -25,7 +26,13 @@ class GlossaryInput(TypedDict):
     glossary: dict
     semantic_tags: dict
 
-def get_schema_and_sample_data(source_type: Literal["csv", "webpage", "swagger", "excel", "parquet", "json", "api"], path: str):
+
+def get_schema_and_sample_data(
+    source_type: Literal[
+        "csv", "webpage", "swagger", "excel", "parquet", "json", "api"
+    ],
+    path: str,
+):
     if source_type == "csv":
         return parse_csv(path)
     elif source_type == "webpage":
@@ -42,11 +49,12 @@ def get_schema_and_sample_data(source_type: Literal["csv", "webpage", "swagger",
         return parse_api(path)
     else:
         raise ValueError(f"Unsupported source type: {source_type}")
-    
+
+
 def chunk_dict(d, chunk_size):
     keys = list(d.keys())
     for i in range(0, len(keys), chunk_size):
-        yield {k: d[k] for k in keys[i:i+chunk_size]}
+        yield {k: d[k] for k in keys[i : i + chunk_size]}
 
 
 def map_glossary(file_path: str, domain: str, source_type: str) -> GlossaryInput:
@@ -64,7 +72,7 @@ def map_glossary(file_path: str, domain: str, source_type: str) -> GlossaryInput
         "steward": steward,
         "domain": domain,
         "glossary": glossary,
-        "semantic_tags": tags
+        "semantic_tags": tags,
     }
 
 
@@ -80,13 +88,17 @@ def map_glossary_node(state: dict) -> dict:
     llm = init_chat_model("anthropic:claude-3-5-sonnet-latest")
 
     responses = []
-    i=0
+    i = 0
 
     for chunk in schema_chunks:
-        print("_______________chunk____________________",chunk)
+        print("_______________chunk____________________", chunk)
 
         chunk_tags = {k: glossary_context["semantic_tags"].get(k, []) for k in chunk}
-        # chunk_sample = glossary_context["sample_data"][list(chunk.keys())].head().to_dict(orient="list")
+        chunk_sample = (
+            glossary_context["sample_data"][list(chunk.keys())]
+            .head()
+            .to_dict(orient="list")
+        )
 
         prompt = f"""
         You are a highly skilled data catalog assistant.Analyze this chunk of fields from a {source_type}
@@ -103,7 +115,8 @@ def map_glossary_node(state: dict) -> dict:
         Schema:
         {json.dumps(chunk, indent=2)}
 
-       
+        Sample Data:
+        {glossary_context["sample_data"]}
 
         Glossary:
         {json.dumps(glossary_context["glossary"], indent=2)}
@@ -127,7 +140,6 @@ def map_glossary_node(state: dict) -> dict:
         - semantic_tags (per column)
         """
 
-       
         result = llm.invoke(prompt)
         responses.append(result.content)
 
