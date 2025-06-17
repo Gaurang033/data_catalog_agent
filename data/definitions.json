@@ -1,0 +1,4 @@
+{
+  "transaction_id": "A unique identifier for each transaction",
+  "purchase_amount": "Total cost of the purchase in local currency"
+}

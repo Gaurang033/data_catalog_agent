@@ -23,7 +23,10 @@ class State(TypedDict):
     messages: Annotated[list, add_messages]
     file_path: str
     domain: str
-    source_type: Literal["csv", "webpage", "swagger"]
+    source_type: Literal[
+        "csv", "webpage", "swagger", "excel", "parquet", "json", "api", "columns_only"
+    ]
+    definitions_path: str | None
 
 
 # Step 4: Build LangGraph flow
@@ -76,10 +79,15 @@ def extract_json_block(text: str) -> dict:
 
 
 # Run it all
-def main(file_path: str, domain: str, source_type: str):
+def main(file_path: str, domain: str, source_type: str, definitions_path: str = None):
     graph = build_graph()
     state = graph.invoke(
-        {"file_path": file_path, "domain": domain, "source_type": source_type}
+        {
+            "file_path": file_path,
+            "domain": domain,
+            "source_type": source_type,
+            "definitions_path": definitions_path,
+        }
     )
     print(state["messages"][-1].content)
     final_message = state["messages"][-1].content
@@ -98,6 +106,12 @@ def main(file_path: str, domain: str, source_type: str):
 if __name__ == "__main__":
     # Example usage
     # main("data/raw_pos.csv", "sales", "csv")
+    main(
+        file_path="data/column_names_only.json",
+        domain="sales",
+        source_type="columns_only",
+        definitions_path="data/definitions.json",
+    )
     # main(
     #     "https://developers.facebook.com/docs/graph-api/reference/user/",
     #     "sales",
@@ -105,7 +119,7 @@ if __name__ == "__main__":
     # )
     # main("data/raw_pos.json", "sales", "json")
     # main("data/raw_pos.xlsx", "sales", "excel")
-    main("data/raw_pos.parquet", "sales", "parquet")
+    # main("data/raw_pos.parquet", "sales", "parquet")
     # main("https://developer.spotify.com/documentation/web-api/reference/get-an-artist", "sales", "webpage")
 
     # main("https://petstore.swagger.io/v2/swagger.json", "sales", "swagger")

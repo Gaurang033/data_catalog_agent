@@ -10,11 +10,14 @@ from utils.source_parser import (
     parse_parquet,
     parse_json,
     parse_api,
+    parse_columns_only,
 )
 from utils.semantic_tagger import infer_semantic_tags
 from typing import TypedDict, Literal
 from pandas import DataFrame
 import json
+import pandas as pd
+from rapidfuzz import process, fuzz
 
 
 class GlossaryInput(TypedDict):
@@ -25,30 +28,55 @@ class GlossaryInput(TypedDict):
     domain: str
     glossary: dict
     semantic_tags: dict
+    definitions: dict
 
 
 def get_schema_and_sample_data(
     source_type: Literal[
-        "csv", "webpage", "swagger", "excel", "parquet", "json", "api"
+        "csv", "webpage", "swagger", "excel", "parquet", "json", "api", "columns_only"
     ],
     path: str,
+    definitions_path: str = None,
 ):
-    if source_type == "csv":
-        return parse_csv(path)
-    elif source_type == "webpage":
-        return parse_webpage(path)
-    elif source_type == "swagger":
-        return parse_swagger(path)
-    elif source_type == "excel":
-        return parse_excel(path)
-    elif source_type == "parquet":
-        return parse_parquet(path)
-    elif source_type == "json":
-        return parse_json(path)
-    elif source_type == "api":
-        return parse_api(path)
+    if source_type == "columns_only":
+        schema, sample, definitions = parse_columns_only(path, definitions_path)
     else:
-        raise ValueError(f"Unsupported source type: {source_type}")
+        parser_fn = {
+            "csv": parse_csv,
+            "webpage": parse_webpage,
+            "swagger": parse_swagger,
+            "excel": parse_excel,
+            "parquet": parse_parquet,
+            "json": parse_json,
+            "api": parse_api,
+        }.get(source_type)
+
+        if not parser_fn:
+            raise ValueError(f"Unsupported source type: {source_type}")
+
+        schema, sample = parser_fn(path)
+        definitions = {}
+
+    return schema, sample, definitions
+
+    # if source_type == "csv":
+    #     return parse_csv(path)
+    # elif source_type == "webpage":
+    #     return parse_webpage(path)
+    # elif source_type == "swagger":
+    #     return parse_swagger(path)
+    # elif source_type == "excel":
+    #     return parse_excel(path)
+    # elif source_type == "parquet":
+    #     return parse_parquet(path)
+    # elif source_type == "json":
+    #     return parse_json(path)
+    # elif source_type == "api":
+    #     return parse_api(path)
+    # elif source_type == "columns_only":
+    #     return parse_columns_only(path, definitions_path)
+    # else:
+    #     raise ValueError(f"Unsupported source type: {source_type}")
 
 
 def chunk_dict(d, chunk_size):
@@ -57,8 +85,12 @@ def chunk_dict(d, chunk_size):
         yield {k: d[k] for k in keys[i : i + chunk_size]}
 
 
-def map_glossary(file_path: str, domain: str, source_type: str) -> GlossaryInput:
-    schema, sample = get_schema_and_sample_data(source_type, file_path)
+def map_glossary(
+    file_path: str, domain: str, source_type: str, definitions_path: str = None
+) -> GlossaryInput:
+    (schema, sample, definitions) = get_schema_and_sample_data(
+        source_type, file_path, definitions_path
+    )
     # print("****_______*********schema_______----------",schema)
     owner = get_owner(domain)
     steward = get_steward(domain)
@@ -73,6 +105,7 @@ def map_glossary(file_path: str, domain: str, source_type: str) -> GlossaryInput
         "domain": domain,
         "glossary": glossary,
         "semantic_tags": tags,
+        "definitions": definitions,
     }
 
 
@@ -80,25 +113,50 @@ def map_glossary_node(state: dict) -> dict:
     file_path = state["file_path"]
     domain = state["domain"]
     source_type = state["source_type"]
+    definitions_path = state.get("definitions_path")
 
-    glossary_context = map_glossary(file_path, domain, source_type)
+    glossary_context = map_glossary(file_path, domain, source_type, definitions_path)
     schema_chunks = list(chunk_dict(glossary_context["schema"], chunk_size=50))
 
     load_dotenv()
     llm = init_chat_model("anthropic:claude-3-5-sonnet-latest")
 
     responses = []
-    i = 0
 
     for chunk in schema_chunks:
         print("_______________chunk____________________", chunk)
 
         chunk_tags = {k: glossary_context["semantic_tags"].get(k, []) for k in chunk}
-        chunk_sample = (
-            glossary_context["sample_data"][list(chunk.keys())]
-            .head()
-            .to_dict(orient="list")
-        )
+        chunk_defs = {k: glossary_context["definitions"].get(k, "") for k in chunk}
+
+        if (
+            isinstance(glossary_context["sample_data"], pd.DataFrame)
+            and not glossary_context["sample_data"].empty
+            and all(col in glossary_context["sample_data"].columns for col in chunk)
+        ):
+            chunk_sample = (
+                glossary_context["sample_data"][list(chunk.keys())]
+                .head()
+                .to_dict(orient="list")
+            )
+        else:
+            chunk_sample = {}
+
+        # Handle sample data safely
+        # if isinstance(glossary_context["sample_data"], pd.DataFrame):
+        #     chunk_sample = (
+        #         glossary_context["sample_data"][list(chunk.keys())]
+        #         .head()
+        #         .to_dict(orient="list")
+        #     )
+        # else:
+        #     chunk_sample = {}
+
+        # chunk_sample = (
+        #     glossary_context["sample_data"][list(chunk.keys())]
+        #     .head()
+        #     .to_dict(orient="list")
+        # )
 
         prompt = f"""
         You are a highly skilled data catalog assistant.Analyze this chunk of fields from a {source_type}
@@ -115,8 +173,11 @@ def map_glossary_node(state: dict) -> dict:
         Schema:
         {json.dumps(chunk, indent=2)}
 
+        Field Descriptions (from definition file):
+        {json.dumps(chunk_defs, indent=2)}
+
         Sample Data:
-        {glossary_context["sample_data"]}
+        {chunk_sample}
 
         Glossary:
         {json.dumps(glossary_context["glossary"], indent=2)}
@@ -126,13 +187,20 @@ def map_glossary_node(state: dict) -> dict:
 
         Instructions:
         - Match fields from the schema/fields to glossary terms if names or types match directly or closely.
-        - If no match is found, suggest a new glossary entry with appropriate business term, value, description, definition (inferred from field name and context), data type, and example.
+        - If no match is found, suggest a new glossary entry with appropriate business term, value, description, definition (inferred from field name, context or from definitions file(if passed)), data type, and example.
         - Output should include semantic tags for each field.
         - In output i don't want only some fields i want output for each and every field that is passed to you so print the output for 
         each and every field according to the logic.
 
         If columns match existing glossary terms, map them.
-        If not, suggest new glossary entries for all the columns—do not skip any.
+        If no suitable glossary term is found:
+            - Suggest a new glossary entry with:
+              - field name
+              - suggested business term
+              - use description from definition file if available
+              - inferred data type
+              - sample value
+              - inferred definition
         Return structured JSON with:
         - mapped_columns
         - new_glossary_entries

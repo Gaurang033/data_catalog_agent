@@ -30,6 +30,7 @@ def guess_type(value: str) -> str:
         return "date"
     return "string"
 
+
 def parse_csv(file_path: str, sample_size=10):
     try:
         df = pd.read_csv(file_path, nrows=sample_size)
@@ -39,6 +40,7 @@ def parse_csv(file_path: str, sample_size=10):
         print(f"Error reading CSV: {e}")
         return {}, pd.DataFrame()
 
+
 def parse_excel(file_path: str, sample_size=10):
     try:
         df = pd.read_excel(file_path, nrows=sample_size)
@@ -47,6 +49,7 @@ def parse_excel(file_path: str, sample_size=10):
     except Exception as e:
         print(f"Error reading Excel: {e}")
         return {}, pd.DataFrame()
+
 
 def parse_parquet(file_path: str, sample_size=10):
     try:
@@ -58,9 +61,10 @@ def parse_parquet(file_path: str, sample_size=10):
         print(f"Error reading Parquet: {e}")
         return {}, pd.DataFrame()
 
+
 def parse_json(file_path: str, sample_size=10):
     try:
-        with open(file_path, 'r') as f:
+        with open(file_path, "r") as f:
             data = json.load(f)
             df = pd.DataFrame(data)
             df_sample = df.head(sample_size)
@@ -69,6 +73,7 @@ def parse_json(file_path: str, sample_size=10):
     except Exception as e:
         print(f"Error reading JSON: {e}")
         return {}, pd.DataFrame()
+
 
 def parse_api(url: str, sample_size=10):
     try:
@@ -94,8 +99,8 @@ def parse_webpage(url: str):
         fields = {}
         # Very simple logic: look for <code> blocks and treat short entries as field names
         seen = set()
-        
-         # Table-based extraction of field + description
+
+        # Table-based extraction of field + description
         for row in soup.select("table tr"):
             cols = row.find_all("td")
             if len(cols) >= 2:
@@ -108,22 +113,28 @@ def parse_webpage(url: str):
         # Fallback to <code> tags if no descriptions found
         for code in soup.find_all("code"):
             field = code.text.strip()
-            if (
-                1 < len(field) < 50 and
-                " " not in field and
-                field not in seen
-            ):
+            if 1 < len(field) < 50 and " " not in field and field not in seen:
                 seen.add(field)
                 fields[field] = ""
-        print("--------fields--------------",fields)
+        print("--------fields--------------", fields)
         return fields, "Webpage input — parsed fields and fallback"
 
-        
         # return fields, "Webpage input — no sample data"
 
     except Exception as e:
         print(f"Error parsing webpage: {e}")
         return {}, "Webpage parsing failed"
+
+
+def parse_columns_only(file_path: str, definitions_path: str = None):
+    with open(file_path) as f:
+        columns = json.load(f)
+    definitions = {}
+    if definitions_path:
+        with open(definitions_path) as df:
+            definitions = json.load(df)
+    return columns, pd.DataFrame(), definitions
+
 
 def parse_swagger(url_or_path: str):
     try:
@@ -132,7 +143,9 @@ def parse_swagger(url_or_path: str):
             swagger = response.json()
         else:
             with open(url_or_path, "r") as f:
-                swagger = json.load(f) if url_or_path.endswith(".json") else yaml.safe_load(f)
+                swagger = (
+                    json.load(f) if url_or_path.endswith(".json") else yaml.safe_load(f)
+                )
 
         fields = {}
         info = "Swagger schema parsed"
@@ -156,7 +169,11 @@ def parse_swagger(url_or_path: str):
                     # Resolve $ref if present
                     if "$ref" in schema:
                         ref_path = schema["$ref"].split("/")[-1]
-                        schema = swagger["definitions"][ref_path] if "definitions" in swagger else swagger["components"]["schemas"][ref_path]
+                        schema = (
+                            swagger["definitions"][ref_path]
+                            if "definitions" in swagger
+                            else swagger["components"]["schemas"][ref_path]
+                        )
 
                     props = schema.get("properties", {})
                     for name, prop in props.items():
@@ -169,4 +186,3 @@ def parse_swagger(url_or_path: str):
 
     except Exception as e:
         return {}, f"Swagger parsing failed: {e}"
-
