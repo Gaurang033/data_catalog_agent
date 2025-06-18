@@ -106,17 +106,19 @@ def main(file_path: str, domain: str, source_type: str, definitions_path: str = 
 if __name__ == "__main__":
     # Example usage
     # main("data/raw_pos.csv", "sales", "csv")
-    main(
-        file_path="data/column_names_only.json",
-        domain="sales",
-        source_type="columns_only",
-        definitions_path="data/definitions.json",
-    )
+    # main(
+    #     file_path="data/column_names_only.json",
+    #     domain="sales",
+    #     source_type="columns_only",
+    #     definitions_path="data/definitions.json",
+    # )
     # main(
     #     "https://developers.facebook.com/docs/graph-api/reference/user/",
     #     "sales",
     #     "webpage",
     # )
+    # main("data/sample_data_catalog.pdf", "sales", "pdf")
+    main("data/audio.mp3", "sales", "audio")
     # main("data/raw_pos.json", "sales", "json")
     # main("data/raw_pos.xlsx", "sales", "excel")
     # main("data/raw_pos.parquet", "sales", "parquet")

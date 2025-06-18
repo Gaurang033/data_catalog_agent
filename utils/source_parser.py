@@ -19,6 +19,8 @@ from bs4 import BeautifulSoup
 import json
 import yaml
 import re
+import PyPDF2
+import speech_recognition as sr
 
 
 def guess_type(value: str) -> str:
@@ -29,6 +31,60 @@ def guess_type(value: str) -> str:
     elif re.match(r"^\d{4}-\d{2}-\d{2}$", value):
         return "date"
     return "string"
+
+
+def parse_pdf(file_path: str) -> str:
+    try:
+        text = ""
+        with open(file_path, "rb") as file:
+            reader = PyPDF2.PdfReader(file)
+            for page in reader.pages:
+                text += page.extract_text() or ""
+        fields = {}
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        i = 0
+        while i < len(lines) - 1:
+            if lines[i].startswith("Field Name:") and lines[i + 1].startswith(
+                "Description:"
+            ):
+                field_name = lines[i].replace("Field Name:", "").strip()
+                description = lines[i + 1].replace("Description:", "").strip()
+                fields[field_name] = description
+                i += 2
+            else:
+                i += 1
+
+        return fields, "Parsed from PDF file"
+    except Exception as e:
+        print(f"Error reading PDF: {e}")
+    return {}, "PDF parsing failed"
+
+
+def parse_audio(file_path: str):
+    recognizer = sr.Recognizer()
+    try:
+        with sr.AudioFile(file_path) as source:
+            audio = recognizer.record(source)
+        text = recognizer.recognize_google(audio)
+        fields = {}
+
+        # Naively parse: Assume format "Field: Description" in the transcript
+        lines = text.splitlines()
+        for line in lines:
+            if ":" in line:
+                key, value = line.split(":", 1)
+                fields[key.strip()] = value.strip()
+        return fields, "Parsed from audio transcription"
+
+    except sr.UnknownValueError:
+        print("Speech Recognition could not understand audio")
+        return {}, "Speech not understood"
+    except sr.RequestError as e:
+        print(f"Speech Recognition service error: {e}")
+        return {}, "Speech recognition request failed"
+    except Exception as e:
+        print(f"Error processing audio file: {e}")
+        return {}, "Audio parsing failed"
 
 
 def parse_csv(file_path: str, sample_size=10):

@@ -11,6 +11,8 @@ from utils.source_parser import (
     parse_json,
     parse_api,
     parse_columns_only,
+    parse_pdf,
+    parse_audio,
 )
 from utils.semantic_tagger import infer_semantic_tags
 from typing import TypedDict, Literal
@@ -33,7 +35,16 @@ class GlossaryInput(TypedDict):
 
 def get_schema_and_sample_data(
     source_type: Literal[
-        "csv", "webpage", "swagger", "excel", "parquet", "json", "api", "columns_only"
+        "csv",
+        "webpage",
+        "swagger",
+        "excel",
+        "parquet",
+        "json",
+        "api",
+        "columns_only",
+        "pdf",
+        "audio",
     ],
     path: str,
     definitions_path: str = None,
@@ -49,6 +60,8 @@ def get_schema_and_sample_data(
             "parquet": parse_parquet,
             "json": parse_json,
             "api": parse_api,
+            "pdf": parse_pdf,
+            "audio": parse_audio,
         }.get(source_type)
 
         if not parser_fn:
